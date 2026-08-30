@@ -1,0 +1,140 @@
+Understanding of JML process with diagrams.
+Following are diagrams with an example for Joiner, Mover, Leaver, SSO, Provisioning, and Access Review.
+
+1. Joiner - A new employee joins the company:
+---------------------------------------------
+
+HR
+ ↓
+IGA
+ ↓
+Create Identity
+ ↓
+Assign Role / Birthright Access
+ ↓
+AD / Entra ID
+ ↓
+Applications
+
+
+Example of Joiner journey:
+--------------------------
+
+New employee
+    ↓
+Department = Finance
+    ↓
+Role = Finance Analyst
+    ↓
+Finance group assigned
+    ↓
+Access to required applications
+
+############################################################################################################################
+
+2. Mover - The employee changes department or job role:
+-------------------------------------------------------
+
+HR
+ ↓
+IGA
+ ↓
+Detect change
+ ↓
+Remove old access
+ ↓
+Assign new access
+ ↓
+Applications updated
+
+
+Example of Mover journey:
+--------------------------
+
+Finance Analyst
+       ↓
+Transfers to HR
+       ↓
+Remove Finance access
+       ↓
+Add HR access
+
+
+###########################################################################################################################
+
+3. Leaver - The employee leaves the company:
+--------------------------------------------
+
+HR
+ ↓
+IGA
+ ↓
+Disable identity
+ ↓
+Remove access
+ ↓
+Disable AD / Entra account
+ ↓
+Deprovision applications
+
+The user's journey ends here!
+
+
+###########################################################################################################################
+
+4. Access request:
+-----------------
+User
+ ↓
+Access Request
+ ↓
+IGA
+ ↓
+Manager Approval
+ ↓
+Application Owner Approval
+ ↓
+Provision Access
+ ↓
+Application
+
+
+Example of access request:
+-------------------------
+Alice
+ ↓
+Requests Salesforce Admin
+ ↓
+Manager Approval
+ ↓
+Application Owner Approval
+ ↓
+Access Granted
+
+
+
+###########################################################################################################################
+
+5. Access Review:
+----------------
+
+IGA
+ ↓
+Generate Access Review
+ ↓
+Manager reviews users
+ ↓
+Keep / Remove
+ ↓
+IGA
+ ↓
+Application
+
+
+Example of Access Review:
+------------------------
+Manager sees:
+
+Alice → Salesforce → Keep
+Bob   → Salesforce → Remove
+John  → Salesforce → Keep
