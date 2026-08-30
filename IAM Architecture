@@ -1,0 +1,32 @@
+Typical IAM Architecture in an organisation:
+--------------------------------------------
+
+HR System with employee details (source of truth)
+     │
+     │
+     v
+IGA (Identity Governance and Audit)
+     │
+     │
+     v
+Identity + Lifecycle (IDM - Identity Managemet)
+     │
+     │
+     v
+Groups / Roles / Access (Access Management)
+     │
+     │
+     v
+Applications
+     │
+     │
+     v
+Authentication + Authorization
+     
+     ^
+     │
+     │
+     │
+Access Requests
+Access Approvals
+Access Reviews
