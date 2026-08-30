@@ -1,0 +1,145 @@
+Using midPoint as the IGA platform.
+
+The workflow diagram:
+---------------------
+
+                         ┌──────────────────┐
+                         │    HR System     │
+                         │  CSV / Database  │
+                         └────────┬─────────┘
+                                  │
+                           Employee Data
+                                  │
+                                  ▼
+                    ┌─────────────────────────┐
+                    │        midPoint         │
+                    │          IGA            │
+                    │                         │
+                    │  Identity Lifecycle     │
+                    │  Roles                  │
+                    │  Access Requests        │
+                    │  Approvals              │
+                    │  Provisioning           │
+                    │  Reconciliation         │
+                    │  Access Reviews         │
+                    └───────────┬─────────────┘
+                                │
+                 ┌──────────────┼──────────────┐
+                 │              │              │
+                 ▼              ▼              ▼
+          ┌────────────┐ ┌────────────┐ ┌────────────┐
+          │    AD      │ │   Entra ID │ │   LDAP     │
+          │            │ │            │ │            │
+          │ Users      │ │ Users      │ │ Users      │
+          │ Groups     │ │ Groups     │ │ Groups     │
+          └─────┬──────┘ └─────┬──────┘ └────────────┘
+                │              │
+                └──────┬───────┘
+                       │
+                       ▼
+              ┌───────────────────┐
+              │    Applications   │
+              │                   │
+              │  ServiceNow       │
+              │  GitLab           │
+              │  Salesforce       │
+              │  Custom Web App   │
+              └───────────────────┘
+
+
+
+
+Building the project around a fictional company:
+-------------------------------------------------
+
+Company: KAVI CORPORATION
+
+Departments:
+- IT
+- HR
+- Finance
+- Sales
+- Marketing
+
+Roles:
+- Employee
+- IT Support
+- HR Analyst
+- Finance Analyst
+- IT Administrator
+
+
+
+Employer joins Sopanam Corporation:
+-----------------------------------
+
+Employee joins KAVI CORPORATION
+        │
+        ▼
+   HR System
+        │
+        ▼
+     midPoint
+        │
+        ├── Create identity
+        │
+        ├── Assign employee role
+        │
+        ├── Assign department role
+        │
+        ├── Calculate required access
+        │
+        ▼
+Provision accounts
+        │
+        ├── Active Directory
+        ├── LDAP
+        └── Applications
+
+
+Following is JML process followed:
+---------------------------------
+
+JOINER
+------
+HR creates employee
+      ↓
+midPoint
+      ↓
+Identity created
+      ↓
+Roles assigned
+      ↓
+Accounts provisioned
+
+
+MOVER
+-----
+Employee changes department
+      ↓
+midPoint detects change
+      ↓
+Old role removed
+      ↓
+New role assigned
+      ↓
+Access recalculated
+      ↓
+Target systems updated
+
+
+LEAVER
+------
+Employee leaves company
+      ↓
+HR updates status
+      ↓
+midPoint detects departure
+      ↓
+Roles removed
+      ↓
+Accounts disabled
+      ↓
+Application access removed
+
+
