@@ -1,0 +1,41 @@
+                    ┌─────────────────┐
+                    │   HR System     │
+                    │ Workday / SAP   │
+                    └────────┬────────┘
+                             │
+                       Employee data
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │   IGA Platform  │
+                    │ --------------- │
+                    │ Joiner          │
+                    │ Mover           │
+                    │ Leaver          │
+                    │ Access Requests │
+                    │ Approvals       │
+                    │ Access Reviews  │
+                    └───────┬─────────┘
+                            │
+              ┌─────────────┼─────────────┐
+              │             │             │
+              ▼             ▼             ▼
+        ┌──────────┐  ┌───────────┐  ┌───────────┐
+        │ Active   │  │ Entra ID  │  │   Cloud   │
+        │ Directory│  │           │  │  / Azure  │
+        └────┬─────┘  └─────┬─────┘  └───────────┘
+             │              │
+             │              │
+             ▼              ▼
+        ┌─────────────────────────────────┐
+        │       Applications / SaaS       │
+        │                                 │
+        │ Salesforce │ ServiceNow │ AWS  │
+        └─────────────────────────────────┘
+                         ▲
+                         │
+                    SSO / MFA
+                         │
+                    ┌────┴────┐
+                    │  User   │
+                    └─────────┘
